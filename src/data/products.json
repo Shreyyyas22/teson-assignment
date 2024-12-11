@@ -1,0 +1,94 @@
+[
+    {
+      "id": 1,
+      "name": "Wireless Earbuds",
+      "image": "assets/earbuds.jpg",
+      "description": "High-quality wireless earbuds with noise cancellation.",
+      "price": 2999
+    },
+    {
+      "id": 2,
+      "name": "Smart Watch",
+      "image": "assets/smartwatch.jpg",
+      "description": "Fitness smart watch with heart rate tracking.",
+      "price": 4999
+    },
+    {
+      "id": 3,
+      "name": "Bluetooth Speaker",
+      "image": "assets/speaker.jpg",
+      "description": "Portable Bluetooth speaker with 10-hour battery life.",
+      "price": 1999
+    },
+    {
+      "id": 4,
+      "name": "Gaming Mouse",
+      "image": "assets/gaming_mouse.jpg",
+      "description": "Ergonomic gaming mouse with customizable RGB lighting.",
+      "price": 2499
+    },
+    {
+      "id": 5,
+      "name": "Laptop Stand",
+      "image": "assets/laptop_stand.jpg",
+      "description": "Adjustable laptop stand for better ergonomics.",
+      "price": 1499
+    },
+    {
+      "id": 6,
+      "name": "Wireless Charger",
+      "image": "assets/wireless_charger.jpg",
+      "description": "Fast wireless charger compatible with most smartphones.",
+      "price": 1999
+    },
+    {
+      "id": 7,
+      "name": "Portable SSD",
+      "image": "assets/portable_ssd.jpg",
+      "description": "1TB portable SSD for fast data transfer.",
+      "price": 5999
+    },
+    {
+      "id": 8,
+      "name": "Action Camera",
+      "image": "assets/action_camera.jpg",
+      "description": "Compact action camera with 4K video recording.",
+      "price": 7999
+    },
+    {
+      "id": 9,
+      "name": "Smartphone Gimbal",
+      "image": "assets/smartphone_gimbal.jpg",
+      "description": "3-axis gimbal stabilizer for smooth video recording.",
+      "price": 3499
+    },
+    {
+      "id": 10,
+      "name": "VR Headset",
+      "image": "assets/vr_headset.jpg",
+      "description": "Immersive VR headset for gaming and entertainment.",
+      "price": 10999
+    },
+    {
+      "id": 11,
+      "name": "Fitness Tracker",
+      "image": "assets/fitness_tracker.jpg",
+      "description": "Water-resistant fitness tracker with sleep monitoring.",
+      "price": 2999
+    },
+    {
+      "id": 12,
+      "name": "Smart Home Hub",
+      "image": "assets/smart_home_hub.png",
+      "description": "Central hub for controlling smart home devices.",
+      "price": 3999
+    },
+    {
+      "id": 13,
+      "name": "Noise Cancelling Headphones",
+      "image": "assets/noise_cancelling_headphones.png",
+      "description": "Over-ear headphones with active noise cancellation.",
+      "price": 8999
+    }
+  ]
+  
