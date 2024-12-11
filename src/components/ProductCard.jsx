@@ -21,24 +21,39 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
     if (isInCart) {
       removeFromCart(product);
-      toast.success(`${name} removed from cart`);  // Toast message for removal
+      toast.success(`${name} removed from cart`); 
     } else {
       addToCart(product);
-      toast.success(`${name} added to cart`);  // Toast message for adding to cart
+      toast.success(`${name} added to cart`); 
     }
   };
 
   return (
-    <div className="w-350px box-shadow-lg border-radius-md m-4 p-4 flex flex-col justify-center items-center">
-      <img src={image} alt={name} className="w-full h-60 object-contain" />
-      <h3 className="mt-4 text-lg font-semibold">{name}</h3>
-      <p className="text-sm text-gray-600">{description}</p>
-      <p className="mt-2 text-green-600 font-bold">₹{price}</p>
+    <div className="w-full sm:w-80 lg:w-64 box-shadow-lg border border-gray-200 rounded-md m-4 p-4 flex flex-col justify-between items-center bg-white">
+      {/* Product Image */}
+      <img
+        src={image}
+        alt={name}
+        className="w-full h-48 sm:h-60 object-contain"
+      />
+
+      {/* Product Details */}
+      <div className="mt-4 text-center">
+        <h3 className="text-lg font-semibold">{name}</h3>
+        <p className="text-sm text-gray-600 mt-2">{description}</p>
+        <p className="mt-4 text-green-600 font-bold">₹{price}</p>
+      </div>
+
+      {/* Action Button */}
       <button
         onClick={handleAddToCart}
-        className={`w-full rounded-md py-1 px-3 mt-4 ${isInCart ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'} text-white`}
+        className={`w-full rounded-md py-2 px-4 mt-4 text-white ${
+          isInCart
+            ? 'bg-red-600 hover:bg-red-700'
+            : 'bg-blue-600 hover:bg-blue-700'
+        }`}
       >
-        {isInCart ? "Remove from Cart" : "Add to Cart"}
+        {isInCart ? 'Remove from Cart' : 'Add to Cart'}
       </button>
     </div>
   );

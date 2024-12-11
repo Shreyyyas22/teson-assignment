@@ -1,15 +1,12 @@
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
-import { toast } from "react-toastify";  // Import toast from react-toastify
-import "react-toastify/dist/ReactToastify.css";  // Import styles for React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CartCard = ({ product }) => {
   const { removeFromCart, changeQuantity } = useCart();
   const { name, price, image, quantity, id } = product;
 
-  const [showLimitWarning, setShowLimitWarning] = useState(false);
-
-  // Handle the increase and decrease actions
+  // Handle increase quantity
   const handleIncrease = () => {
     if (quantity < 10) {
       changeQuantity(id, "increase");
@@ -18,6 +15,7 @@ export const CartCard = ({ product }) => {
     }
   };
 
+  // Handle decrease quantity
   const handleDecrease = () => {
     if (quantity > 1) {
       changeQuantity(id, "decrease");
@@ -26,31 +24,25 @@ export const CartCard = ({ product }) => {
     }
   };
 
+  // Handle remove item
   const handleRemove = () => {
-    // Show confirmation toast
     const toastId = toast.info(
       <div>
         <p>Are you sure you want to remove this product from the cart?</p>
         <div className="flex justify-between mt-2">
           <button
-            className="bg-red-600 text-white rounded-md py-1 px-3"
+            className="bg-red-600 text-white rounded-md py-1 px-3 hover:bg-red-700"
             onClick={() => {
-              // Remove item from cart
               removeFromCart(product);
-              // Show success toast message
               toast.success("Product removed from cart");
-              // Dismiss the confirmation toast after successful removal
               toast.dismiss(toastId);
             }}
           >
             Confirm
           </button>
           <button
-            className="bg-gray-600 text-white rounded-md py-1 px-3"
-            onClick={() => {
-              // Dismiss the confirmation toast when Cancel is clicked
-              toast.dismiss(toastId);
-            }}
+            className="bg-gray-600 text-white rounded-md py-1 px-3 hover:bg-gray-700"
+            onClick={() => toast.dismiss(toastId)}
           >
             Cancel
           </button>
@@ -58,43 +50,63 @@ export const CartCard = ({ product }) => {
       </div>,
       {
         position: "top-center",
-        autoClose: false, // Do not auto-close the toast
+        autoClose: false,
         closeOnClick: false,
         draggable: false,
-        progress: undefined,
       }
     );
   };
 
   return (
-    <div className="cartCard flex justify-between items-center shadow-lg rounded-md m-4 p-4">
-      <img src={image} alt={name} className="w-32 h-32 object-contain mr-4" />
-      <div className="product-info">
-        <h3 className="font-semibold">{name}</h3>
-        <p className="font-bold text-green-600">${price}</p>
-        <p>Quantity: {quantity}</p>
+    <div className="cartCard flex flex-col sm:flex-row items-center shadow-lg rounded-md m-4 p-4 bg-white">
+      {/* Product Image */}
+      <img
+        src={image}
+        alt={name}
+        className="w-24 h-24 sm:w-32 sm:h-32 object-contain rounded-md"
+      />
+
+      {/* Product Details */}
+      <div className="product-info flex-1 text-center sm:text-left mt-4 sm:mt-0 sm:ml-4">
+        <h3 className="font-semibold text-lg">{name}</h3>
+        <p className="text-green-600 font-bold mt-2">₹{price}</p>
+        <p className="text-gray-500 mt-1">Quantity: {quantity}</p>
       </div>
-      <div className="quantity-controls flex items-center space-x-2">
+
+      {/* Quantity Controls */}
+      <div className="quantity-controls flex items-center space-x-2 mt-4 sm:mt-0">
         <button
           onClick={handleDecrease}
           disabled={quantity <= 1}
-          className={`bg-gray-400 text-white rounded-md py-1 px-3 ${quantity <= 1 ? "cursor-not-allowed" : ""}`}
+          aria-label="Decrease Quantity"
+          className={`py-1 px-3 rounded-md font-semibold ${
+            quantity <= 1
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-gray-400 hover:bg-gray-500 text-white"
+          }`}
         >
           -
         </button>
-        <span>{quantity}</span>
+        <span className="font-semibold">{quantity}</span>
         <button
           onClick={handleIncrease}
           disabled={quantity >= 10}
-          className={`bg-blue-600 text-white rounded-md py-1 px-3 ${quantity >= 10 ? "cursor-not-allowed" : ""}`}
+          aria-label="Increase Quantity"
+          className={`py-1 px-3 rounded-md font-semibold ${
+            quantity >= 10
+              ? "bg-blue-300 text-gray-200 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700 text-white"
+          }`}
         >
           +
         </button>
       </div>
 
+      {/* Remove Button */}
       <button
         onClick={handleRemove}
-        className="bg-red-600 text-white rounded-md py-1 px-3 ml-4"
+        aria-label="Remove Product"
+        className="bg-red-600 hover:bg-red-700 text-white rounded-md py-1 px-3 mt-4 sm:mt-0 sm:ml-4"
       >
         Remove
       </button>
